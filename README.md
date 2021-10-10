@@ -9,7 +9,7 @@
                 2 persons in each group: Qiao, Catherine
                 
         3) course DD2437 (ANN) artificial neural network and deep architecture :
-                lab1 perceptron learning (2-layer, 3-layer perceptron)
+                lab1 perceptron learning and Delta Rule (2-layer, 3-layer, multi-layer perceptron)
                      use perceptron for classification, regression, time series prediction
                 lab2 radial basis function, competitive learning, self organization
                 lab3 hopfield network
