@@ -25,5 +25,6 @@
                 lab2 tictactoe, using minimax algorithm, alphabeta prunning
                 
         6) course DD2424 deep learning in data science: 
-                1 lab. individual work: Qiao
+                lab 1 
+                individual work: Qiao
         
