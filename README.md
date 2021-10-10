@@ -15,9 +15,11 @@
                 lab3 hopfield network
                 lab4 restricted boltzman machine, deep belief network
                 3 persons in each group: Bharat, Qiao, Ravi
+                
         4) course DD2434 (advML) Machine Learning Advanced course:
                 lab1 maximum likelihood, maximum a posterior, prior, posterior, evidence. 
                 individual work: Qiao        
+                
         5) course DD2380 artificial intelligence:
                 lab1 hidden markov model
                 lab2 tictactoe, using minimax algorithm, alphabeta prunning
