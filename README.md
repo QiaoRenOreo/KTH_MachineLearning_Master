@@ -18,17 +18,17 @@
                 
         4) course DD2434 (advML) Machine Learning Advanced course:
                 lab1 maximum likelihood, maximum a posterior, prior, posterior, evidence. 
-                other lab
+                and other labs
                 individual work: Qiao        
                 
         5) course DD2380 artificial intelligence:
                 lab1 hidden markov model
                 lab2 tictactoe, using minimax algorithm, alphabeta prunning
-                other lab
+                and other labs
                 2 persons in each group: Qiao, Ravi
                 
         6) course DD2424 deep learning in data science: 
                 lab 1 
-                other lab
+                and other labs
                 individual work: Qiao
         
