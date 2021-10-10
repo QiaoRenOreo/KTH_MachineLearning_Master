@@ -14,7 +14,7 @@
                 lab2 radial basis function, self organization
                 lab3 hopfield network
                 lab4 restricted boltzman machine, deep belief network
-                3 persons in each group: Bharat, Qiao, Ravi
+                3 persons in each group: Qiao, Bharat, Ravi
                 
         4) course DD2434 (advML) Machine Learning Advanced course:
                 lab1 maximum likelihood, maximum a posterior, prior, posterior, evidence. 
