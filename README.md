@@ -1,4 +1,5 @@
-# Master Machine Learning, at KTH Royal Institute of Technology, Stockholm, Sweden
+# Master Machine Learning
+# KTH Royal Institute of Technology, Stockholm, Sweden
 
         1) transcript in kth, curriculum in kth
         
