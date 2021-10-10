@@ -11,7 +11,7 @@
         3) course DD2437 (ANN) artificial neural network and deep architecture :
                 lab1 perceptron learning 
                      perceptron for classification, regression, time series prediction
-                lab2 radial basis function, self organization
+                lab2 radial basis function, competitive learning, self organization
                 lab3 hopfield network
                 lab4 restricted boltzman machine, deep belief network
                 3 persons in each group: Qiao, Bharat, Ravi
