@@ -18,9 +18,8 @@
                 
                 
         4) course DD2380 artificial intelligence:
-        click [here](https://github.com/QiaoRenOreo/My-Presentation-CNN-method/blob/master/CNN_methodology.pdf)
                 lab1 hidden markov model click [here](https://github.com/QiaoRenOreo/Hidden_Markov_Model) to see this lab
-                lab2 tictactoe, using minimax algorithm, alphabeta prunning [click here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
+                lab2 tictactoe, using minimax algorithm, alphabeta prunning. click [here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
                 2 persons in each group: Qiao, Ravi
                 
         5) other assignments: 
