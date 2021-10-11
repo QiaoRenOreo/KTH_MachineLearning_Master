@@ -22,8 +22,8 @@
                 individual work: Qiao        
                 
         5) course DD2380 artificial intelligence:
-                lab1 hidden markov model
-                lab2 tictactoe, using minimax algorithm, alphabeta prunning
+                lab1 hidden markov model [click here](https://github.com/QiaoRenOreo/Hidden_Markov_Model) to see this lab
+                lab2 tictactoe, using minimax algorithm, alphabeta prunning [click here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
                 and other labs
                 2 persons in each group: Qiao, Ravi
                 
