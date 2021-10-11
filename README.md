@@ -16,19 +16,13 @@
                 lab4 restricted boltzman machine, deep belief network
                 3 persons in each group: Qiao, Bharat, Ravi
                 
-        4) course DD2434 (advML) Machine Learning Advanced course:
-                lab1 maximum likelihood, maximum a posterior, prior, posterior, evidence. 
-                and other labs
-                individual work: Qiao        
                 
-        5) course DD2380 artificial intelligence:
+        4) course DD2380 artificial intelligence:
                 lab1 hidden markov model [click here](https://github.com/QiaoRenOreo/Hidden_Markov_Model) to see this lab
                 lab2 tictactoe, using minimax algorithm, alphabeta prunning [click here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
-                and other labs
                 2 persons in each group: Qiao, Ravi
                 
-        6) course DD2424 deep learning in data science: 
-                lab 1 
-                and other labs
-                individual work: Qiao
+        5) other assignments: 
+                DD2434 lab1 maximum likelihood, maximum a posterior, prior, posterior, evidence. individual work: Qiao       
+                DD2424 lab1 deep learning in data science. individual work: Qiao
         
