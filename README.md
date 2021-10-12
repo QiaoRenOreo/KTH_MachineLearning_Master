@@ -13,7 +13,6 @@
                      use perceptron for classification, regression, time series prediction
                 lab2 radial basis function, competitive learning, self organization
                 lab3 hopfield network
-                lab4 restricted boltzman machine, deep belief network
                 3 persons in each group: Qiao, Bharat, Ravi
                 
                 
