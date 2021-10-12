@@ -27,6 +27,6 @@
                 
                 
         5) other assignments: 
-                DD2434 lab maximum likelihood, maximum a posterior, individual work: Qiao       
-                DD2424 lab deep learning in data science. individual work: Qiao
+                lab maximum likelihood, maximum a posterior, individual work: Qiao       
+                lab deep learning in data science. individual work: Qiao
         
