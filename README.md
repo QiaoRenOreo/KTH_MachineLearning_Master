@@ -27,6 +27,6 @@
                 2 persons in each group: Qiao, Ravi
                 
         5) other assignments: 
-                DD2434 lab1 maximum likelihood, maximum a posterior, individual work: Qiao       
-                DD2424 lab1 deep learning in data science. individual work: Qiao
+                DD2434 lab maximum likelihood, maximum a posterior, individual work: Qiao       
+                DD2424 lab deep learning in data science. individual work: Qiao
         
