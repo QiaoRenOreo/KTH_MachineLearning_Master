@@ -5,7 +5,7 @@
         2) course DD2421 (ML) machine learning :  
                 lab1 decision tree
                 lab2 support vector machine
-                lab3 bayes boosting with boosting
+                lab3 bayes learning with boosting
                 2 persons in each group: Qiao, Catherine
                 
         3) course DD2437 (ANN) artificial neural network and deep architecture :
