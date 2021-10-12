@@ -1,0 +1,229 @@
+import numpy as np
+import keras
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from keras.callbacks import EarlyStopping
+from keras import regularizers
+from keras.optimizers import Adam
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+from keras.preprocessing.sequence import TimeseriesGenerator
+from keras.layers import LSTM
+from keras.layers import Dropout
+from keras.models import Sequential
+from keras.layers import Dense
+
+np.random.seed (30)
+
+    
+def generate_next_data (current_time , x): # x is a 2d array. size of x: 1 row * (number of data points) col
+    next_data = x[0][current_time] + ( ( 0.2 * x[0][current_time -25] )  /  (1+ (x[0][current_time -25])**10 )  ) -0.1* x[0][current_time]
+    return next_data
+
+def generate_input (t, x): # x: a 2D array. x stores Mackey Glass data
+    l=[x[0][t-20],
+      x[0][t-15],
+      x[0][t-10],
+      x[0][t-5],
+      x[0][t]]
+    return l
+
+def generate_output (t, data_target_1531):
+    return data_target_1531[0][t+5]
+
+
+def generate_Mackey_Galss_Data( how_many_data_point):
+    data_target_1531=np.zeros((1, how_many_data_point)) # 1 row * 1531 col
+    data_target_1531[0][25]=1.5
+    for i in range (25, 1530):
+        data_target_1531[0][i+1] = generate_next_data (i, data_target_1531)
+    # print( data_target_1531.shape)
+    return data_target_1531
+
+
+# add gaussian noise to my pure data
+def add_noise (data_target_1531, noise_std_dev): 
+    noise_mean=0
+    noise = np.random.normal(noise_mean, noise_std_dev, data_target_1531.shape)  # np.random.normal(mu, sigma, 1000)
+    data_target_1531_noise = data_target_1531 + noise
+    return data_target_1531_noise
+
+def generate_inputArray_outputArray (data_target_1531):
+    inputData = []
+    outputData = []
+    for j in range(301, 1501):
+        i =j+25
+        inputData.append (generate_input (i, data_target_1531) )
+        outputData.append (generate_output (i, data_target_1531) )
+
+    inputData = np.array(inputData, dtype=float) # convert list to array
+    outputData = np.array(outputData, dtype=float)
+
+    return inputData, outputData
+
+
+# split to train, validation, and test data
+#split_1: split between train and val. 
+#split_2: split between val and test. 
+def split (inputData, outputData): 
+    
+    train_input,  val_input,  test_input  =  inputData[:split_1 , :], inputData[ split_1:split_2 , :], inputData[split_2:, :]
+    train_output, val_output, test_output =  outputData[:split_1],    outputData[ split_1:split_2 ],    outputData[split_2:]
+
+    return train_input, val_input, test_input, train_output, val_output, test_output
+
+def generate_6_DataSet (data_target_1531 ): # standard deviation: choose std_1 or std_2 or std_3
+  
+    inputData, outputData = generate_inputArray_outputArray (data_target_1531 )
+    train_in, val_in, test_in, train_out, val_out, test_out       = split (inputData, outputData)
+    return train_in, val_in, test_in, train_out, val_out, test_out
+
+##############################
+def draw ( l, color):
+    index_list= range( len (l))
+    plt.scatter (index_list, l, c=color)
+    plt.show()
+
+    
+def draw_2_scatters ( l1, color1, l2, color2):
+    index_list= range( len (l1))
+    p1=plt.scatter (index_list, l1, c=color1, s=10) # s: marker size
+    p2=plt.scatter (index_list, l2, c=color2, s=10)
+    
+    plt.legend( (p1,p2), ('pure data', 'noised data'), scatterpoints=1, loc='lower left', ncol=1, fontsize=10)
+    plt.show()
+    
+def draw_3_scatters ( l1, color1, l2, color2, l3, color3):
+    index_list= range( len (l1))
+    p1=plt.scatter (index_list, l1, c=color1, s=10) # s: marker size
+    p2=plt.scatter (index_list, l2, c=color2, s=10)
+    p3=plt.scatter (index_list, l3, c=color3, s=10)
+    
+    plt.legend( (p1,p2,p3), ('pure data', 'noised data', 'prediction'), scatterpoints=1, loc='lower left',  ncol=1, fontsize=10)
+    plt.show()
+
+
+
+data_target_1531 = generate_Mackey_Galss_Data(1531)
+
+std_1=0.03
+std_2=0.09
+std_3=0.18
+
+
+data_target_1531_noise1 = add_noise (data_target_1531, std_1 )
+data_target_1531_noise2 = add_noise (data_target_1531, std_2 )
+data_target_1531_noise3 = add_noise (data_target_1531, std_3 )
+
+split_1 = 800
+split_2 = 1000
+
+
+train_in_pure,  val_in_pure,  test_in_pure,  train_out_pure,  val_out_pure,  test_out_pure = generate_6_DataSet (data_target_1531 )
+
+train_in_noise1, val_in_noise1, test_in_noise1, train_out_noise1, val_out_noise1, test_out_noise1 = generate_6_DataSet (data_target_1531_noise1 )
+train_in_noise2, val_in_noise2, test_in_noise2, train_out_noise2, val_out_noise2, test_out_noise2 = generate_6_DataSet (data_target_1531_noise2 )
+train_in_noise3, val_in_noise3, test_in_noise3, train_out_noise3, val_out_noise3, test_out_noise3 = generate_6_DataSet (data_target_1531_noise3 )
+
+# print (train_out_pure)
+# print (data_target_1531.shape)
+draw_2_scatters (train_out_pure[:], 'c', train_out_noise1[:],'b')
+draw_2_scatters (train_out_pure[:], 'c', train_out_noise2[:],'b')
+draw_2_scatters (train_out_pure[:], 'c', train_out_noise3[:],'b')
+
+draw_2_scatters (test_out_pure[:], 'c', test_out_noise1[:],'b')
+draw_2_scatters (test_out_pure[:], 'c', test_out_noise2[:],'b')
+draw_2_scatters (test_out_pure[:], 'c', test_out_noise3[:],'b')
+
+# draw_2_scatters (val_out_pure[:], 'c', val_out_noise1[:],'b')
+# draw_2_scatters (test_out_pure[:], 'c', test_out_noise1[:],'b')
+
+
+def plot_loss(model_history):
+    
+    plt.plot (model_history.history['loss'])
+    plt.show ()
+    return 
+
+def predict (kerasModel, test_data  ):
+    prediction = kerasModel.predict(test_data)
+    return prediction
+
+def train_2_layer_NN(train_input, train_output, val_input, val_output): 
+    dim_InputData =5
+    num_neurons_layer1 = 8  
+    model = Sequential()  
+    model.add(Dense( num_neurons_layer1, 
+                     input_shape=(dim_InputData,),
+                     kernel_regularizer=regularizers.l2(0.01),  # regularizer l2 norm
+                     activity_regularizer=regularizers.l1(0.01)  # regularizer l1 norm
+                   ) )  
+    model.add(Dense(1))
+
+    model.compile(loss='mean_squared_error', optimizer=Adam(lr=0.001, decay=1e-6)  )
+
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
+
+    history=model.fit(train_input, train_output, 
+                      validation_data=(val_input, val_output), #validation_split=0.1, 
+                      nb_epoch=100, 
+                      batch_size=1, 
+                      verbose=1,
+                      callbacks = [es]
+                     )
+
+    return model, history
+
+model_pure, model_pure_history = train_2_layer_NN(train_in_pure, train_out_pure, val_in_pure, val_out_pure)
+
+
+
+plot_loss(model_pure_history)
+
+
+def train_3_layer_NN(train_input, train_output, val_input, val_output): 
+    dim_InputData =5
+    num_neurons_layer1 = 8 
+    num_neurons_layer2 = 4 
+    model = Sequential()  
+    model.add(Dense( num_neurons_layer1, 
+                     input_shape=(dim_InputData,),
+                     kernel_regularizer=regularizers.l2(0.01),  # regularizer l2 norm
+                     activity_regularizer=regularizers.l1(0.01)  # regularizer l1 norm
+                   ) )  
+    model.add(Dense(num_neurons_layer2))
+    model.add(Dense(1))
+
+    model.compile(loss='mean_squared_error', optimizer=Adam(lr=0.001, decay=1e-6)  )
+
+    es = EarlyStopping(monitor='val_loss', mode='min', verbose=1)
+
+    history=model.fit(train_input, train_output, 
+                      validation_data=(val_input, val_output), #validation_split=0.1, 
+                      nb_epoch=100, 
+                      batch_size=1, 
+                      verbose=1,
+                      callbacks = [es]
+                     )
+
+    return model, history
+
+
+def run_3layer_model (train_in_noise, train_out_noise, val_in_noise, val_out_noise,test_in_noise, test_out_noise ):
+    model_noise, noise_history = train_3_layer_NN(train_in_noise, train_out_noise, val_in_noise, val_out_noise)
+    plot_loss( noise_history )
+    prediction_noise = predict (model_noise, test_in_noise)
+    draw_3_scatters ( test_out_pure, 'c', test_out_noise, 'b', prediction_noise, 'r')
+    return model_noise, noise_history
+
+
+model_pure, noise_pure = run_3layer_model (train_in_pure, train_out_pure, val_in_pure, val_out_pure, test_in_pure, test_out_pure )
+
+model_noise1, noise_history1 = run_3layer_model (train_in_noise1, train_out_noise1, val_in_noise1, val_out_noise1,test_in_noise1, test_out_noise1 )
+
+model_noise2, noise_history2 = run_3layer_model (train_in_noise2, train_out_noise2, val_in_noise2, val_out_noise2, test_in_noise2, test_out_noise2 )
+
+model_noise3, noise_history3 = run_3layer_model (train_in_noise3, train_out_noise3, val_in_noise3, val_out_noise3, test_in_noise3, test_out_noise3 )
+
