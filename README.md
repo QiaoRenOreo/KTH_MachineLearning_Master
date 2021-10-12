@@ -25,8 +25,4 @@
                 click [here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
                 
                 
-                
-        5) other labs: 
-                lab maximum likelihood, maximum a posterior, individual work: Qiao       
-                lab deep learning in data science. individual work: Qiao
         
