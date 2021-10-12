@@ -24,7 +24,7 @@
                 lab2 tictactoe, using minimax algorithm, alphabeta prunning. 
                 click [here](https://github.com/QiaoRenOreo/TicTacToe_MiniMax) to see this lab
                 
-                2 persons in each group: Qiao, Ravi
+                
                 
         5) other assignments: 
                 DD2434 lab maximum likelihood, maximum a posterior, individual work: Qiao       
